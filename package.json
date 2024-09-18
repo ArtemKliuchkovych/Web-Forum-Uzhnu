@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ключкович Артем",
+  "license": "ISC",
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.94.0",
+    "webpack-dev-server": "^5.1.0",
+    "eslint": "^9.10.0",
+    "prettier": "^3.3.3",
+    "cypress": "^13.14.2"
+  }
+}
