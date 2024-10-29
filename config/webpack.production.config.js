@@ -1,17 +1,20 @@
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const config = {
-    mode: 'development',
+    mode: 'production',
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle--[hash:base64].js',
     },
+    plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
             {
                 test: /\.css$/i,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -25,22 +28,7 @@ const config = {
                     },
                 ],
             },
-            {
-                test: /\.jsx?$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env', '@babel/preset-react'],
-                            plugins: ['istanbul'],
-                        },
-                    },
-                ],
-            },
         ],
-    },
-    devServer: {
-        port: 3000,
     },
 };
 
