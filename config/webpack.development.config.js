@@ -17,7 +17,7 @@ const config = {
                         options: {
                             modules: {
                                 mode: 'local',
-                                localIdentName: '[name]__[local]',
+                                localIdentName: '[name]__[local]__[hash:base64:5]',
                                 // namedExport: true, case 1;
                                 namedExport: false,
                             },
@@ -29,6 +29,7 @@ const config = {
     },
     devServer: {
         port: 3000,
+        historyApiFallback: true,
     },
 };
 

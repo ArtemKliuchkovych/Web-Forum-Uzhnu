@@ -1,0 +1,11 @@
+.mainContainer {
+    overflow: hidden;
+}
+
+.mainContainer {
+    position: relative;
+
+    padding-bottom: 70px;
+    background: #d9d9d9;
+    overflow: hidden;
+}

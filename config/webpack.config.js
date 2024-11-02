@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: path.resolve(__dirname, '../src/main.jsx'),
     output: {
         path: path.resolve(__dirname, '../dist'),
     },
@@ -19,7 +19,7 @@ const config = {
             ],
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../templates/index.html'),
+            template: path.resolve(__dirname, '../index.html'),
         }),
     ],
     module: {
