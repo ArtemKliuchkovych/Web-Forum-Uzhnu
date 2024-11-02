@@ -3,6 +3,7 @@ import styles from './Forum.module.css';
 import Header from '../../components/Header/Header';
 import PageNumberNavigation from '../../components/PageNumberNavigation/PageNumberNavigation';
 import PostInfo from './components/PostInfo/PostInfo';
+import Sort from './components/Sort/Sort';
 
 export default function Main() {
     let time = new Date().getTime();
@@ -14,9 +15,10 @@ export default function Main() {
                     <span className={styles.facultyforum}>
                         Хімічний факультет (Навчально-науковий інститут хімії та екології)
                     </span>
-                    <button className={styles.buttonSort}>
-                        <span className={styles.sort}>Сортувати</span>
-                    </button>
+                    <div>
+                        <button className={styles.buttonSort}>Сортувати</button>
+                        <Sort />
+                    </div>
                 </div>
             </div>
             <PageNumberNavigation />
@@ -83,9 +85,9 @@ export default function Main() {
                 />
             </div>
             <PageNumberNavigation />
-            <div className={styles.frame310}>
-                <div className={styles.frame40}>
-                    <input className={styles.span41} placeholder={'Назва поста'}></input>
+            <div className={styles.newPostFrame}>
+                <div className={styles.newPostFrameHeader}>
+                    <input className={styles.newPostName} placeholder={'Назва поста'}></input>
                     <button className={styles.button}>Створити</button>
                 </div>
 
