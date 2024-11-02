@@ -1,0 +1,106 @@
+.forumHeaderFrame {
+    position: relative;
+    width: auto;
+    height: 180px;
+    margin: 0 0 0 0;
+    padding: 0 20px 0 20px;
+    background: #2d4392;
+    z-index: 84;
+    overflow: hidden;
+    min-width: 0;
+}
+.forumUzhnu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    width: 415px;
+    height: 180px;
+    top: 0;
+    left: 240px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 86;
+    overflow: hidden;
+}
+.icon {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 0;
+    left: 20px;
+    background: url(../../assets/images/70e822312c2e29cb6385905a5d1abfdde2dde4b0.png) no-repeat center;
+    background-size: cover;
+    z-index: 87;
+}
+.forumHeaderNavigation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+    position: relative;
+    width: auto;
+    height: 40px;
+    margin: 0 0 0 0;
+    padding: 0 20px 0 20px;
+    background: #ffed00;
+    z-index: 88;
+    overflow: hidden;
+}
+.mainAndRules {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 34px;
+    position: absolute;
+    width: 297px;
+    height: 39px;
+    top: 0;
+    left: 34px;
+    z-index: 90;
+}
+.main {
+    position: relative;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 91;
+}
+.rules {
+    position: relative;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 92;
+}
+.loginRegister {
+    position: relative;
+    height: 40px;
+    top: calc(50% - 20px);
+    float: right;
+    margin: 0 0 0 auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: right;
+    white-space: nowrap;
+    z-index: 93;
+}
