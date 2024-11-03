@@ -35,14 +35,15 @@
     flex-basis: auto;
     position: relative;
     min-width: 0;
-    height: 39px;
+    max-width: 400px;
+    height: auto;
     color: #000000;
     font-family: Inter, var(--default-font-family);
     font-size: 32px;
     font-weight: 400;
     line-height: 38.727px;
     text-align: left;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     z-index: 3;
 }
 .commentDate {
@@ -79,7 +80,7 @@
     white-space: nowrap;
     z-index: 5;
 }
-.comentText {
+.commentText {
     position: relative;
     width: 874px;
     height: auto;

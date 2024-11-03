@@ -4,9 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-    entry: path.resolve(__dirname, '../src/main.jsx'),
+    entry: [path.resolve(__dirname, '../src/main.jsx')],
     output: {
         path: path.resolve(__dirname, '../dist'),
+        publicPath: '/',
     },
     plugins: [
         new CopyWebpackPlugin({

@@ -3,82 +3,47 @@
         Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
         sans-serif;
 }
-
-.maincontainer {
-    overflow: hidden;
-}
-
-.maincontainer,
-.maincontainer * {
-    box-sizing: border-box;
-}
-
 input,
 select,
 textarea,
 button {
     outline: 0;
 }
-
-.maincontainer {
-    position: relative;
-    width: auto;
-    height: auto;
-    margin: 0 auto;
-    background: #ffffff;
-    overflow: hidden;
-}
-.frame {
-    position: relative;
-    width: auto;
-    height: auto;
-    margin: 0 0 0 0;
-    background: #bababa;
-    border: 1px solid #000000;
-}
-.datesort {
+.dateSort {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 167px;
-    height: 34px;
-    top: 1px;
-    left: -1px;
-    color: #000000;
+    width: auto;
+    height: auto;
     font-family: Inter, var(--default-font-family);
     font-size: 28px;
     font-weight: 400;
     line-height: 33.886px;
     text-align: center;
     white-space: nowrap;
-    z-index: 1;
-}
-.frame1 {
-    position: relative;
-    width: auto;
-    height: 78px;
+    color: #000000;
     margin: 0 0 0 0;
-    background: #ffffff;
+    background: #bababa;
     border: 1px solid #000000;
-    z-index: 2;
 }
-.commentcount {
+.commentSort {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 167px;
-    height: 68px;
-    top: 4px;
-    left: -1px;
+    width: auto;
+    height: 78px;
+    margin: 0 0 0 0;
     color: #000000;
     font-family: Inter, var(--default-font-family);
     font-size: 28px;
     font-weight: 400;
     line-height: 33.886px;
     text-align: center;
-    z-index: 3;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 2;
 }
 .flexrow {
     position: relative;
@@ -90,57 +55,41 @@ button {
     flex-direction: row;
     justify-content: space-evenly;
 }
-.frame2 {
-    position: relative;
-    width: 50%;
-    height: 67px;
-    top: 0;
-    left: 0;
-    background: #bababa;
-    border: 1px solid #000000;
-    z-index: 4;
-}
 .asc {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 57px;
+    width: 50%;
     height: 67px;
-    top: -1px;
-    left: -1px;
+    top: 0;
+    left: 0;
     color: #000000;
     font-family: Inter, var(--default-font-family);
     font-size: 28px;
     font-weight: 400;
     line-height: 33.886px;
     text-align: center;
-    z-index: 5;
+    background: #bababa;
+    border: 1px solid #000000;
+    z-index: 4;
 }
-.frame3 {
+.desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 50%;
     height: 67px;
     top: 0;
     left: 0px;
-    background: #ffffff;
-    border: 1px solid #000000;
-    z-index: 6;
-}
-.desc {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    width: auto;
-    height: 67px;
-    top: -1px;
-    right: -1px;
     color: #000000;
     font-family: Inter, var(--default-font-family);
     font-size: 28px;
     font-weight: 400;
     line-height: 33.886px;
     text-align: right;
-    z-index: 5;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 6;
 }

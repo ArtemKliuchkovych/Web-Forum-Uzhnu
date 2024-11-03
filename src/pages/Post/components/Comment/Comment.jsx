@@ -3,7 +3,7 @@ import styles from './Comment.module.css';
 import PropTypes from 'prop-types';
 
 export default function Comment({ authorName, commentText, commentTime }) {
-    let time = new Date(Date.parse(commentTime));
+    let time = new Date(commentTime);
     let year = time.getFullYear();
     let month = time.getMonth();
     let date = time.getDate();
@@ -38,5 +38,5 @@ export default function Comment({ authorName, commentText, commentTime }) {
 Comment.propTypes = {
     authorName: PropTypes.string.isRequired,
     commentText: PropTypes.string.isRequired,
-    commentTime: PropTypes.string,
+    commentTime: PropTypes.number.isRequired,
 };

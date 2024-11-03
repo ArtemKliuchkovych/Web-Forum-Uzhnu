@@ -38,13 +38,13 @@ export default function Main() {
                     lastUpdate={new Date(2024, 10, 11, 12, 2).toString()}
                     name={'Медичний факультет'}
                     postsNumber={1000}
-                    linkName={'medicalone'}
+                    linkName={'medicineone'}
                 />
                 <ForumInfo
                     lastUpdate={new Date(2024, 10, 11, 12, 2).toString()}
                     name={'Медичний факультет №2'}
                     postsNumber={1000}
-                    linkName={'medicaltwo'}
+                    linkName={'medicintwo'}
                 />
                 <ForumInfo
                     lastUpdate={new Date(2024, 10, 11, 12, 2).toString()}

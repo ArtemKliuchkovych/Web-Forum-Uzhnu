@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function PostInfo({ postTitle, authorName, commentNumber, creationTime, postId, forumName }) {
-    let time = new Date(Date.parse(creationTime));
+    let time = new Date(creationTime);
     let year = time.getFullYear();
     let month = time.getMonth();
     let date = time.getDate();
@@ -37,7 +37,7 @@ PostInfo.propTypes = {
     postTitle: PropTypes.string.isRequired,
     authorName: PropTypes.string.isRequired,
     commentNumber: PropTypes.number.isRequired,
-    creationTime: PropTypes.string.isRequired,
+    creationTime: PropTypes.number.isRequired,
     postId: PropTypes.number.isRequired,
     forumName: PropTypes.string.isRequired,
 };
