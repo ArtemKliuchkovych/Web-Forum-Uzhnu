@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Post.module.css';
-import Header from '../../components/Header/Header';
 import PageNumberNavigation from '../../components/PageNumberNavigation/PageNumberNavigation';
 import Comment from './components/Comment/Comment';
 
@@ -8,7 +7,6 @@ export default function Main() {
     let time = new Date().getTime();
     return (
         <>
-            <Header />
             <div className={styles.postInfo}>
                 <span className={styles.postAuthor}>Автор посту</span>
                 <span className={styles.postTitle}>Назва посту</span>

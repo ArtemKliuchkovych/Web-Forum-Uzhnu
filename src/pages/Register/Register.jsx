@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './Register.module.css';
-import Header from '../../components/Header/Header';
+import { Link } from 'react-router-dom';
 
 export default function Main() {
     return (
         <>
-            <Header />
             <div className={styles.loginFrame}>
                 <div className={styles.text}>Email</div>
                 <input className={styles.input} placeholder={'Введіть Email'}></input>
@@ -14,7 +13,9 @@ export default function Main() {
                 <div className={styles.text}>Повторіть пароль</div>
                 <input className={styles.input} placeholder={'Введіть пароль'} type={'password'}></input>
                 <div className={styles.forgotAndSwapFrame}>
-                    <div className={styles.register}>Ввійти</div>
+                    <Link to={'/login'} className={styles.register}>
+                        Ввійти
+                    </Link>
                     <div className={styles.forgotpassword}>Забули пароль?</div>
                 </div>
                 <button className={styles.buttonframe}>Зареєструватися</button>

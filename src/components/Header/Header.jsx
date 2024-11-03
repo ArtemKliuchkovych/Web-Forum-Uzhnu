@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
+import { Link, Outlet } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -18,11 +19,18 @@ export default function Header() {
             </div>
             <div className={styles.forumHeaderNavigation}>
                 <div className={styles.mainAndRules}>
-                    <div className={styles.main}>Головна</div>
-                    <div className={styles.rules}>Правила</div>
+                    <Link to={'/'} className={styles.main}>
+                        Головна
+                    </Link>
+                    <Link to={'/rules'} className={styles.rules}>
+                        Правила
+                    </Link>
                 </div>
-                <div className={styles.loginRegister}>Увійти/Зареєструватися</div>
+                <Link to={'/login'} className={styles.loginRegister}>
+                    Увійти/Зареєструватися
+                </Link>
             </div>
+            <Outlet />
         </div>
     );
 }

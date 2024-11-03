@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './PostInfo.module.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export default function PostInfo({ postTitle, authorName, commentNumber, creationTime }) {
+export default function PostInfo({ postTitle, authorName, commentNumber, creationTime, postId, forumName }) {
     let time = new Date(Date.parse(creationTime));
     let year = time.getFullYear();
     let month = time.getMonth();
@@ -16,7 +17,9 @@ export default function PostInfo({ postTitle, authorName, commentNumber, creatio
         <div className={styles.postInfo}>
             <div className={styles.frameInner}>
                 <div className={styles.leftColumn}>
-                    <span className={styles.postTitle}>{postTitle}</span>
+                    <Link to={`/${forumName}/${postId}`} state={{ name: postTitle }} className={styles.postTitle}>
+                        {postTitle}
+                    </Link>
                     <span className={styles.authoName}>Автор посту: {authorName}</span>
                 </div>
                 <div className={styles.rightColumn}>
@@ -34,5 +37,7 @@ PostInfo.propTypes = {
     postTitle: PropTypes.string.isRequired,
     authorName: PropTypes.string.isRequired,
     commentNumber: PropTypes.number.isRequired,
-    creationTime: PropTypes.string,
+    creationTime: PropTypes.string.isRequired,
+    postId: PropTypes.number.isRequired,
+    forumName: PropTypes.string.isRequired,
 };

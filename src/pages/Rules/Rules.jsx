@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './Rules.module.css';
-import Header from '../../components/Header/Header';
 
 export default function Main() {
     return (
         <div>
-            <Header />
             <div className={styles.textFrame}>
                 <div className={styles.textPositioning}>
                     <div className={styles.rulesTextHeader}>Правила:</div>

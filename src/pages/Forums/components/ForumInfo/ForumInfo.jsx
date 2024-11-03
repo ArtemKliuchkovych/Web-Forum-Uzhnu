@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './ForumInfo.module.css';
+import { Link } from 'react-router-dom';
 
-export default function ForumInfo({ name, postsNumber, lastUpdate }) {
+export default function ForumInfo({ name, postsNumber, lastUpdate, linkName }) {
     let time = new Date(Date.parse(lastUpdate));
     let year = time.getFullYear();
     let month = time.getMonth();
@@ -15,7 +16,9 @@ export default function ForumInfo({ name, postsNumber, lastUpdate }) {
     return (
         <div className={styles.forumFrame}>
             <div className={styles.forumColumn}>
-                <div className={styles.forumName}>{name}</div>
+                <Link to={`/${linkName}`} state={{ name: name }} className={styles.forumName}>
+                    {name}
+                </Link>
                 <div className={styles.forumPostNumber}>{postsNumber} Постів</div>
             </div>
             <div className={styles.forumLastUpdate}>
@@ -30,5 +33,6 @@ export default function ForumInfo({ name, postsNumber, lastUpdate }) {
 ForumInfo.propTypes = {
     name: PropTypes.string.isRequired,
     postsNumber: PropTypes.number.isRequired,
-    lastUpdate: PropTypes.string,
+    lastUpdate: PropTypes.string.isRequired,
+    linkName: PropTypes.string.isRequired,
 };

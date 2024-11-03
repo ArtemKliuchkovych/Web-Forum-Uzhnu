@@ -138,7 +138,7 @@ button {
     left: 0;
     z-index: 98;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 .facultyforum {
     flex-shrink: 0;
