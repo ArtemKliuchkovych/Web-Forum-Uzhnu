@@ -1,0 +1,95 @@
+.innerFrame {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 50px;
+    width: auto;
+    height: auto;
+    margin: 0 0 30px 0;
+}
+.commentFrame {
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 0;
+    height: auto;
+    border: 1px solid #000000;
+    z-index: 1;
+}
+.infoFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 15px;
+    position: relative;
+    width: 314px;
+    height: auto;
+    top: 9px;
+    left: 15px;
+    z-index: 2;
+}
+.commentAuthor {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    max-width: 400px;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    /* white-space: nowrap; */
+    z-index: 3;
+}
+.commentDate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    width: 269px;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 4;
+    overflow: hidden;
+}
+.commentNumber {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+}
+.commentText {
+    position: relative;
+    width: 874px;
+    height: auto;
+    top: 9px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24.205px;
+    text-align: left;
+    z-index: 6;
+}
