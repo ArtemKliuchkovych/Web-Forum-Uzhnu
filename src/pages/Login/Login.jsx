@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
-import api from '../../api/posts'
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../../api/posts';
 import AuthContext from '../../Auth/AuthProvider';
 
 export default function Main() {
-    function handleClick() {
-        console.log(email);
-        console.log(password);
-    }
-
     function emailInput(e) {
         setEmail(e.target.value);
     }
@@ -18,45 +13,57 @@ export default function Main() {
         setPassword(e.target.value);
     }
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [success, setSuccess] = useState(false);
-    const { setAuth } = useContext(authContext);
+    const { auth, setAuth } = useContext(AuthContext);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [success, setSuccess] = useState(auth.email !== '');
+    const [errorMessage, setErrorMessage] = useState('Забули пароль?');
+
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
-        console.log(password);
         try {
-            const response = await api.post(JSON.stringify({ email, password }), {
+            const response = await api.post('/login', JSON.stringify({ email, password }), {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true,
             });
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({ email, password, roles, accessToken });
-            setPassword('');
-            setEmail('');
-            setSuccess(true);
+            const accessToken = response.data.accessToken;
+            setAuth({ email, accessToken });
+            localStorage.setItem(
+                'user',
+                JSON.stringify({
+                    token: response.data.accessToken,
+                    ...response.data,
+                }),
+            );
+            setSuccess(auth.email !== '');
+            navigate('/');
         } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
-            }
-            errRef.current.focus();
+            console.log(err);
+            setErrorMessage('error/wrong password/email');
         }
     };
 
+    const logOut = () => {
+        setAuth({
+            email: '',
+        });
+        localStorage.removeItem('user');
+        window.location.reload();
+    };
+
     return (
-        <div className={styles.loginFrame}>
+        <div>
             {success ? (
-                <div className={styles.text}>You are logged in</div>
+                <div className={styles.loginFrame}>
+                    <div className={styles.text}>You are logged in</div>
+                    <button className={styles.buttonframe} onClick={logOut}>
+                        Вийти
+                    </button>
+                </div>
             ) : (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={styles.loginFrame}>
                     <div className={styles.text}>Email</div>
                     <input
                         className={styles.input}
@@ -76,11 +83,9 @@ export default function Main() {
                         <Link to={'/register'} className={styles.register}>
                             Зареєструватися
                         </Link>
-                        <div className={styles.forgotpassword}>Забули пароль?</div>
+                        <div className={styles.forgotpassword}>{errorMessage}</div>
                     </div>
-                    <button className={styles.buttonframe} onClick={handleClick}>
-                        Ввійти
-                    </button>
+                    <button className={styles.buttonframe}>Ввійти</button>
                 </form>
             )}
         </div>

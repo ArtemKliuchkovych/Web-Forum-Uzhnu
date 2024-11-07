@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function PostInfo({ postTitle, authorName, commentNumber, creationTime, postId, forumName }) {
     let time = new Date(creationTime);
     let year = time.getFullYear();
-    let month = time.getMonth();
+    let month = time.getMonth() + 1;
     let date = time.getDate();
     let hour = time.getHours();
     let minute = time.getMinutes();
@@ -38,6 +38,6 @@ PostInfo.propTypes = {
     authorName: PropTypes.string.isRequired,
     commentNumber: PropTypes.number.isRequired,
     creationTime: PropTypes.number.isRequired,
-    postId: PropTypes.number.isRequired,
+    postId: PropTypes.string.isRequired,
     forumName: PropTypes.string.isRequired,
 };

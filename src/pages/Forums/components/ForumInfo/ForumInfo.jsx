@@ -4,7 +4,7 @@ import styles from './ForumInfo.module.css';
 import { Link } from 'react-router-dom';
 
 export default function ForumInfo({ name, postsNumber, lastUpdate, linkName }) {
-    let time = new Date(Date.parse(lastUpdate));
+    let time = new Date(lastUpdate);
     let year = time.getFullYear();
     let month = time.getMonth();
     let date = time.getDate();
@@ -33,6 +33,6 @@ export default function ForumInfo({ name, postsNumber, lastUpdate, linkName }) {
 ForumInfo.propTypes = {
     name: PropTypes.string.isRequired,
     postsNumber: PropTypes.number.isRequired,
-    lastUpdate: PropTypes.string.isRequired,
+    lastUpdate: PropTypes.number.isRequired,
     linkName: PropTypes.string.isRequired,
 };

@@ -14,7 +14,7 @@
         "prepare": "husky && husky install",
         "test:ct": "cypress run --component --browser chrome",
         "test:open": "cypress open",
-        "start:json-server": "json-server --watch db.json --port 3030"
+        "start:json-server": "json-server-auth --watch db.json --port 3030"
     },
     "author": "Ключкович Артем",
     "license": "ISC",
@@ -28,6 +28,8 @@
     },
     "dependencies": {
         "axios": "^1.7.7",
+        "json-server": "^0.17.4",
+        "json-server-auth": "^2.1.0",
         "prop-types": "^15.8.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
@@ -57,7 +59,6 @@
         "globals": "^15.11.0",
         "html-webpack-plugin": "^5.6.0",
         "husky": "^8.0.0",
-        "json-server": "^1.0.0-beta.3",
         "lint-staged": "^15.2.10",
         "mini-css-extract-plugin": "^2.9.1",
         "prettier": "3.3.3",
