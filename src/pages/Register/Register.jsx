@@ -1,24 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './Register.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import AuthContext from '../../Auth/AuthProvider';
-import api from '../../api/posts';
+import AuthContext from '../../auth/AuthProvider';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function Main() {
-    const { auth, setAuth } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
+    const { error, response, register, logout } = useAuth();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [checkPassword, setCheckPassword] = useState('');
     const [success, setSuccess] = useState(auth.email !== '');
-    const [errorMessage, setErrorMessage] = useState('Забули пароль?');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    console.log(auth);
+    console.log(auth.email);
+    console.log(success);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (auth.email !== '') {
-            setSuccess(true);
-        }
-    }, []);
+        setSuccess(auth.email !== '');
+    }, [auth]);
 
     function emailInput(e) {
         setEmail(e.target.value);
@@ -36,40 +40,17 @@ export default function Main() {
         e.preventDefault();
         if (email.endsWith('@student.uzhnu.edu.ua') !== true && email.endsWith('@uzhnu.edu.ua') !== true)
             setErrorMessage('email not valid');
-        else if (password.length < 4) setErrorMessage('password too short');
+        else if (password.length < 6) setErrorMessage('password too short');
         else if (password !== checkPassword) setErrorMessage('passwords dont match');
         else {
-            setErrorMessage('Забули пароль?');
-            api.post('/register', { email: email, password: password })
-                .then(({ data }) => {
-                    setAuth({
-                        token: data.accessToken,
-                        ...data.user,
-                    });
-                    localStorage.setItem(
-                        'user',
-                        JSON.stringify({
-                            token: data.accessToken,
-                            ...data.user,
-                        }),
-                    );
-                    setSuccess(auth.email !== '');
-                    navigate('/');
-                })
-                .catch((err) => {
-                    console.log(err);
-                    setErrorMessage('error/user already exists');
-                });
+            setErrorMessage('');
+            await register(email, password);
+            if (response === true) navigate('/');
+            else setErrorMessage(error);
         }
     };
 
-    const logOut = () => {
-        setAuth({
-            email: '',
-        });
-        localStorage.removeItem('user');
-        window.location.reload();
-    };
+    const logOut = () => logout();
 
     return (
         <>

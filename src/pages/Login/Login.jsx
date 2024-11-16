@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import styles from './Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import api from '../../api/posts';
-import AuthContext from '../../Auth/AuthProvider';
+import AuthContext from '../../auth/AuthProvider';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function Main() {
     function emailInput(e) {
@@ -13,45 +13,26 @@ export default function Main() {
         setPassword(e.target.value);
     }
 
-    const { auth, setAuth } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
+    const { error, response, login, logout } = useAuth();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [success, setSuccess] = useState(auth.email !== '');
-    const [errorMessage, setErrorMessage] = useState('Забули пароль?');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await api.post('/login', JSON.stringify({ email, password }), {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true,
-            });
-            const accessToken = response.data.accessToken;
-            setAuth({ email, accessToken });
-            localStorage.setItem(
-                'user',
-                JSON.stringify({
-                    token: response.data.accessToken,
-                    ...response.data,
-                }),
-            );
+        await login(email, password);
+        if (response === true) {
             setSuccess(auth.email !== '');
             navigate('/');
-        } catch (err) {
-            console.log(err);
-            setErrorMessage('error/wrong password/email');
-        }
+        } else setErrorMessage(error);
     };
 
-    const logOut = () => {
-        setAuth({
-            email: '',
-        });
-        localStorage.removeItem('user');
-        window.location.reload();
-    };
+    const logOut = () => logout();
 
     return (
         <div>

@@ -8,7 +8,7 @@ import PostPage from './pages/Post/Post';
 import styles from './App.module.css';
 import Header from './components/Header/Header';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './Auth/AuthProvider';
+import { AuthProvider } from './auth/AuthProvider';
 
 export default function App() {
     return (

@@ -3,48 +3,15 @@ import styles from './Post.module.css';
 import PageNumberNavigation from '../../components/PageNumberNavigation/PageNumberNavigation';
 import Comment from './components/Comment/Comment';
 import { useParams } from 'react-router-dom';
-import api from '../../api/posts';
-import AuthContext from '../../Auth/AuthProvider';
+import AuthContext from '../../auth/AuthProvider';
+import { useGet } from '../../hooks/useGet';
+import { usePost } from '../../hooks/usePost';
 
 export default function Main() {
     const { postID } = useParams();
     const { auth } = useContext(AuthContext);
-
-    useEffect(() => {
-        const getComments = async () => {
-            try {
-                const commentsResponse = await api.get(`/comments`);
-                const postResponse = await api.get('/posts');
-
-                const postsData = postResponse.data;
-                const commentsData = commentsResponse.data;
-
-                const filtered = commentsData.filter((comment) => comment.postId === postID);
-                const post = postsData.filter((post) => post.id === postID);
-
-                console.log(post);
-                setThisPost(post[0]);
-                console.log(thisPost);
-                setCommentsData(filtered);
-                setLoggedIn(auth.email === '');
-
-                let time = new Date(post.creationDateTime);
-                let year = time.getFullYear();
-                let month = time.getMonth() + 1;
-                let date = time.getDate();
-                let hour = time.getHours();
-                let minute = time.getMinutes();
-                let second = time.getSeconds();
-                if (minute < 10) minute = '0' + minute;
-                if (second < 10) second = '0' + second;
-                setTimeOfCreation(date + ' ' + month + ' ' + year + ' ' + hour + ':' + minute + ':' + second);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        getComments();
-        setLoggedIn(auth.email === '');
-    }, []);
+    const { getPostsData, getCommentsData } = useGet();
+    const { createComment } = usePost();
 
     const [timeOfCreation, setTimeOfCreation] = useState('');
 
@@ -62,37 +29,50 @@ export default function Main() {
     const currentItems = commentsData.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
+        const getComments = async () => {
+            const postsResponse = await getPostsData();
+            if (postsResponse.error) {
+                console.error(postsResponse.error);
+                return;
+            }
+            const postsData = postsResponse.data;
+
+            const post = Object.values(postsData).find((p) => {
+                const postId = p.id || Object.keys(postsData).find((key) => postsData[key] === p);
+                return postId === postID;
+            });
+            setThisPost(post);
+
+            if (post) {
+                const time = new Date(post.creationDateTime);
+                setTimeOfCreation(
+                    `${time.getDate()} ${time.getMonth() + 1} ${time.getFullYear()} ${time.getHours()}:${time.getMinutes().toString().padStart(2, '0')}:${time.getSeconds().toString().padStart(2, '0')}`,
+                );
+            }
+
+            const commentsResponse = await getCommentsData();
+            if (commentsResponse.error) {
+                console.error(commentsResponse.error);
+                return;
+            }
+            const commentsData = commentsResponse.data;
+
+            const comments = Object.values(commentsData).filter((comment) => comment.postId === postID);
+            setCommentsData(comments);
+        };
+        getComments();
+    }, []);
+
+    useEffect(() => {
         setLoggedIn(auth.email === '');
     }, [loggedIn]);
 
-    useEffect(() => {
-        setThisPost(thisPost);
-        console.log(thisPost);
-        let time = new Date(thisPost.creationDateTime);
-        let year = time.getFullYear();
-        let month = time.getMonth() + 1;
-        let date = time.getDate();
-        let hour = time.getHours();
-        let minute = time.getMinutes();
-        let second = time.getSeconds();
-        if (minute < 10) minute = '0' + minute;
-        if (second < 10) second = '0' + second;
-        setTimeOfCreation(date + ' ' + month + ' ' + year + ' ' + hour + ':' + minute + ':' + second);
-    }, [thisPost]);
-
-    const createComment = () => {
-        //console.log(auth.user.email)
-        const time = new Date().getTime();
-        const info = {
-            creationDateTime: time,
-            commentContent: newComment,
-            commentAuthor: auth.user.email,
-            postId: postID,
-        };
-
-        api.post(`/comments`, info)
-            .then(() => window.location.reload())
-            .catch((e) => console.log(e));
+    const handleCreateComment = () => {
+        createComment({
+            newComment: newComment,
+            authEmail: auth.email,
+            postID: postID,
+        });
     };
 
     return (
@@ -109,7 +89,7 @@ export default function Main() {
             <div className={styles.comentsFrame}>
                 {currentItems.map((item, i) => (
                     <Comment
-                        key={item.id}
+                        key={indexOfFirstItem + i + 1}
                         authorName={item.commentAuthor.substring(0, item.commentAuthor.indexOf('@'))}
                         commentText={item.commentContent}
                         commentTime={item.creationDateTime}
@@ -119,9 +99,7 @@ export default function Main() {
             </div>
             <PageNumberNavigation pageChange={setPageNumber} currentPage={pageNumber} maxPages={totalPages} />
             {loggedIn ? (
-                <div className={styles.postCommentFrame}>
-                    Увійдіть щоб створювати пости. Якщо ви вже зайшли перезайдіть на форум оновлення сторінки немпрацює
-                </div>
+                <div className={styles.postCommentFrame}>Увійдіть щоб створювати пости.</div>
             ) : (
                 <div className={styles.postCommentFrame}>
                     <input
@@ -130,7 +108,7 @@ export default function Main() {
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
                     />
-                    <button className={styles.frame414} onClick={createComment}>
+                    <button className={styles.frame414} onClick={handleCreateComment}>
                         Додати
                     </button>
                 </div>

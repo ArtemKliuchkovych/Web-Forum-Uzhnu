@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function ForumInfo({ name, postsNumber, lastUpdate, linkName }) {
     let time = new Date(lastUpdate);
     let year = time.getFullYear();
-    let month = time.getMonth();
+    let month = time.getMonth() + 1;
     let date = time.getDate();
     let hour = time.getHours();
     let minute = time.getMinutes();

@@ -2,45 +2,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import styles from './Forum.module.css';
 import PageNumberNavigation from '../../components/PageNumberNavigation/PageNumberNavigation';
 import PostInfo from './components/PostInfo/PostInfo';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import api from '../../api/posts';
-import AuthContext from '../../Auth/AuthProvider';
+import { useLocation, useParams } from 'react-router-dom';
+import AuthContext from '../../auth/AuthProvider';
+import { useGet } from '../../hooks/useGet';
+import { usePost } from '../../hooks/usePost';
 
 export default function Main() {
-    useEffect(() => {
-        const filterPosts = (forum, posts, comments) => {
-            const forumPostIds = forum.map((item) => item.postId.toString());
-            const filtered = posts.filter((post) => forumPostIds.includes(post.id));
-
-            for (let i = 0; i < filtered.length; i++) {
-                let num = 0;
-                for (let j = 0; j < comments.length; j++) {
-                    if (filtered[i].id === comments[j].postId) num++;
-                }
-                Object.assign(filtered[i], { commentsNumber: num });
-            }
-            return filtered;
-        };
-
-        const comparePosts = async () => {
-            try {
-                const forumResponse = await api.get(`/${forumName}`);
-                const postsResponse = await api.get('/posts');
-                const commentsResponse = await api.get('/comments');
-                const forumData = forumResponse.data;
-                const postsData = postsResponse.data;
-                const commentsData = commentsResponse.data;
-                const filteredPosts = filterPosts(forumData, postsData, commentsData);
-                setPostsData(filteredPosts);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        comparePosts();
-    }, []);
-
     const { auth } = useContext(AuthContext);
+    const { getForumsData, getPostsData, getCommentsData } = useGet();
+    const { createPost } = usePost();
+
     const [dateColor, setDateColor] = useState(true);
     const [commentColor, setCommentColor] = useState(false);
     const [ascColor, setAscColor] = useState(true);
@@ -59,33 +30,60 @@ export default function Main() {
     const [newPostName, setNewPostName] = useState('');
     const [newPostText, setNewPostText] = useState('');
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        const filterPosts = (forum, posts, comments) => {
+            const forumPostIds = Object.values(forum).map((item) => item.postId.toString());
+
+            const processedPosts = Object.values(posts).map((post) => {
+                const postId = post.id || Object.keys(posts).find((key) => posts[key] === post);
+                const commentsNumber = Object.values(comments).filter((comment) => comment.postId === postId).length;
+                return { ...post, id: postId, commentsNumber };
+            });
+
+            return processedPosts.filter((post) => forumPostIds.includes(post.id));
+        };
+
+        const comparePosts = async () => {
+            const forumResponse = await getForumsData(forumName);
+            if (forumResponse.error) {
+                console.error(forumResponse.error);
+                return;
+            }
+            const forumData = forumResponse.data;
+            const postsResponse = await getPostsData();
+            if (postsResponse.error) {
+                console.error(postsResponse.error);
+                return;
+            }
+            const postsData = postsResponse.data;
+            const commentsResponse = await getCommentsData();
+            if (commentsResponse.error) {
+                console.error(commentsResponse.error);
+                return;
+            }
+            const commentsData = commentsResponse.data;
+            const filteredPosts = filterPosts(forumData, postsData, commentsData);
+            setPostsData(filteredPosts);
+        };
+
+        comparePosts();
+    }, []);
 
     useEffect(() => {
         setLoggedIn(auth.email === '');
     }, [loggedIn]);
 
-    const createPost = () => {
-        const time = new Date().getTime();
-        const info = { creationDateTime: time, postTitle: newPostName, postAuthor: auth.user.email };
+    const handleCreatePost = async () => {
+        if (newPostText === '') {
+            setNewPostText('Input here first');
+            return;
+        }
+        if (newPostName === '') {
+            setNewPostName('Input here first');
+            return;
+        }
 
-        api.post(`/posts`, info)
-            .then(
-                (r) => (
-                    api
-                        .post(`/comments`, {
-                            creationDateTime: time,
-                            commentContent: newPostText,
-                            commentAuthor: r.data.postAuthor,
-                            postId: r.data.id,
-                        })
-                        .then()
-                        .catch((e) => console.log(e)),
-                    api.post(`/${forumName}`, { postId: r.data.id }),
-                    navigate(`/${forumName}/${r.data.id}`)
-                ),
-            )
-            .catch((e) => console.log(e));
+        await createPost({ forumName, postTitle: newPostName, postText: newPostText, authEmail: auth.email });
     };
 
     const [sortParams, setSortParams] = useState({ keyToSort: 'creationDateTime', direction: 'asc' });
@@ -185,8 +183,6 @@ export default function Main() {
             <PageNumberNavigation pageChange={setPageNumber} currentPage={pageNumber} maxPages={totalPages} />
             <div className={styles.postInfoFrame}>
                 {currentItems.map((item) => (
-                    //console.log(item),
-
                     <PostInfo
                         key={item.id}
                         postTitle={item.postTitle}
@@ -200,9 +196,7 @@ export default function Main() {
             </div>
             <PageNumberNavigation pageChange={setPageNumber} currentPage={pageNumber} maxPages={totalPages} />
             {loggedIn ? (
-                <div className={styles.newPostFrame}>
-                    Увійдіть щоб створювати пости. Якщо ви вже зайшли перезайдіть на форум оновлення сторінки немпрацює
-                </div>
+                <div className={styles.newPostFrame}>Увійдіть щоб створювати пости.</div>
             ) : (
                 <div className={styles.newPostFrame}>
                     <div className={styles.newPostFrameHeader}>
@@ -212,7 +206,7 @@ export default function Main() {
                             value={newPostName}
                             onChange={(e) => setNewPostName(e.target.value)}
                         ></input>
-                        <button className={styles.button} onClick={createPost}>
+                        <button className={styles.button} onClick={handleCreatePost}>
                             Створити
                         </button>
                     </div>
