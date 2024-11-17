@@ -29,7 +29,10 @@ export default function Main() {
         if (response === true) {
             setSuccess(auth.email !== '');
             navigate('/');
-        } else setErrorMessage(error);
+        } else {
+            setErrorMessage('invalid mail or password');
+            console.log(error);
+        }
     };
 
     const logOut = () => logout();
