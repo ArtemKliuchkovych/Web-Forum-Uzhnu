@@ -3,7 +3,8 @@ import pluginJs from '@eslint/js';
 import pluginReact from 'eslint-plugin-react';
 
 export default [
-    { files: ['**/*.{js,mjs,cjs,jsx}'] },
+    { files: ['src/**/*.{js,mjs,cjs,jsx}'] },
+    {ignores: ['dist/**/*']},
     {
         settings: {
             pluginReact: {

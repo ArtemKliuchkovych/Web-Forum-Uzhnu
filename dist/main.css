@@ -1,0 +1,1362 @@
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
+        Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
+        sans-serif;
+}
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+.Forums-module__forums {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 38px 0 0 34px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 83;
+}
+.Forums-module__forumsDisplay {
+    position: relative;
+    width: auto;
+    margin: 38px 38px 0 34px;
+    background: #ffffff;
+    border: 1px solid #000000;
+}
+.Forums-module__forumsDisplayHeader {
+    position: relative;
+    width: auto;
+    height: 75px;
+    background: #ededed;
+    border: 1px solid #000000;
+    z-index: 1;
+}
+.Forums-module__forumsDisplayHeaderText {
+    position: absolute;
+    height: 39px;
+    top: calc(50% - 20px);
+    left: 45px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.ForumInfo-module__forumFrame {
+    align-self: stretch;
+    position: relative;
+    min-width: 0;
+    min-height: 138px;
+    height: auto;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    z-index: 75;
+}
+.ForumInfo-module__forumColumn {
+    width: 600px;
+    height: auto;
+    padding-top: 20px;
+    padding-left: 45px;
+    padding-bottom: 20px;
+    top: 19px;
+    left: 45px;
+    z-index: 77;
+}
+.ForumInfo-module__forumName {
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 600px;
+    height: auto;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 76;
+}
+.ForumInfo-module__forumPostNumber {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 20px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 77;
+}
+.ForumInfo-module__forumLastUpdate {
+    position: absolute;
+    width: 320px;
+    height: 78px;
+    top: calc(50% - 40px);
+    right: 45px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 82;
+    overflow: hidden;
+}
+
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
+        Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
+        sans-serif;
+}
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+.Forum-module__postInfoFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 50px 76px 0 76px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    /* overflow: hidden; */
+}
+.Forum-module__newPostFrame {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 38px 76px 0 76px;
+    background: #ffffff;
+    z-index: 90;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+}
+.Forum-module__newPostFrameHeader {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 28px 45px 0 45px;
+    column-gap: 60px;
+    z-index: 94;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+}
+.Forum-module__newPostName {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    height: 39px;
+    width: 800px;
+    top: 0;
+    left: 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 95;
+}
+.Forum-module__button {
+    position: relative;
+    height: auto;
+    float: right;
+    width: auto;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 97;
+}
+.Forum-module__span42 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    height: 39px;
+    top: -1px;
+    left: -1px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 97;
+}
+.Forum-module__input {
+    margin: 14px 45px 0 45px;
+    position: relative;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    min-height: 107px;
+    min-width: 1200px;
+    line-height: 38.727px;
+    text-align: left;
+    width: auto;
+    height: auto;
+    background: transparent;
+    border: 1px solid #000000;
+    z-index: 93;
+    resize: vertical;
+}
+.Forum-module__flexrowe {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 28px 76px 0 76px;
+    z-index: 98;
+    justify-content: space-between;
+}
+.Forum-module__regroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: auto;
+    align-self: stretch;
+    height: auto;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.Forum-module__facultyforum {
+    flex-shrink: 0;
+    position: relative;
+    height: auto;
+    width: 80%;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 51;
+}
+.Forum-module__buttonSort {
+    flex-shrink: 0;
+    position: relative;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 98;
+}
+.Forum-module__sort {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 39px;
+    top: -1px;
+    left: -1px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 99;
+}
+.Forum-module__dateSort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: auto;
+    height: auto;
+    font-family: Inter, var(--default-font-family);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 33.886px;
+    text-align: center;
+    white-space: nowrap;
+    color: #000000;
+    margin: 0 0 0 0;
+    background: #bababa;
+    border: 1px solid #000000;
+}
+.Forum-module__commentSort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: auto;
+    height: 78px;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 33.886px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 2;
+}
+.Forum-module__flexrow {
+    position: relative;
+    display: flex;
+    height: 67px;
+    margin: 0 0 0 0;
+    z-index: 6;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.Forum-module__asc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    height: 67px;
+    top: 0;
+    left: 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 33.886px;
+    text-align: center;
+    background: #bababa;
+    border: 1px solid #000000;
+    z-index: 4;
+}
+.Forum-module__desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    height: 67px;
+    top: 0;
+    left: 0px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 33.886px;
+    text-align: right;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 6;
+}
+
+.PageNumberNavigation-module__frame {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    position: relative;
+    width: auto;
+    text-align: right;
+    margin: 25px 76px 0 76px;
+    z-index: 800;
+}
+.PageNumberNavigation-module__frame1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 40px;
+    width: auto;
+    height: auto;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 81;
+}
+.PageNumberNavigation-module__doublearrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 39px;
+    top: calc(50% - 20.5px);
+    left: calc(50% - 22.5px);
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 82;
+}
+.PageNumberNavigation-module__frame2 {
+    flex-shrink: 0;
+    position: relative;
+    width: 47px;
+    height: 39px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 83;
+}
+.PageNumberNavigation-module__singlearrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 39px;
+    top: calc(50% - 20.5px);
+    left: calc(50% - 11.5px);
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 84;
+}
+.PageNumberNavigation-module__framePage {
+    flex-shrink: 0;
+    position: relative;
+    width: 47px;
+    height: 39px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 87;
+}
+.PageNumberNavigation-module__numberPage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 39px;
+    top: calc(50% - 20.5px);
+    left: calc(50% - 10.5px);
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 88;
+}
+.PageNumberNavigation-module__frame8 {
+    flex-shrink: 0;
+    position: relative;
+    width: 47px;
+    height: 39px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 95;
+}
+.PageNumberNavigation-module__singlearrowright {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 39px;
+    top: calc(50% - 20.5px);
+    left: calc(50% - 11.5px);
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 96;
+}
+.PageNumberNavigation-module__frame9 {
+    flex-shrink: 0;
+    position: relative;
+    width: 47px;
+    height: 39px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    z-index: 97;
+}
+.PageNumberNavigation-module__doublearrowright {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 39px;
+    top: calc(50% - 20.5px);
+    left: calc(50% - 22.5px);
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 98;
+}
+
+.PostInfo-module__postInfo {
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 0;
+    height: auto;
+    width: auto;
+    border: 1px solid #000000;
+    z-index: 1;
+    /* overflow: hidden; */
+}
+.PostInfo-module__frameInner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 50px;
+    width: auto;
+    height: auto;
+    margin: 0 0 30px 0;
+}
+.PostInfo-module__leftColumn {
+    position: relative;
+    width: 1000px;
+    height: auto;
+    font-size: 0px;
+    margin: 25px 0 35px 21px;
+    z-index: 3;
+}
+.PostInfo-module__postTitle {
+    display: block;
+    position: relative;
+    height: auto;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    /* white-space: nowrap; */
+    z-index: 2;
+}
+.PostInfo-module__authoName {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 3;
+}
+.PostInfo-module__rightColumn {
+    position: relative;
+    width: 316px;
+    height: 64px;
+    margin: 38px 60px 0 0;
+    font-size: 0px;
+    z-index: 5;
+}
+.PostInfo-module__comentCount {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 4;
+}
+.PostInfo-module__creationDate {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
+        Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
+        sans-serif;
+}
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+.Rules-module__textFrame {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 41px 76px 0 76px;
+    background: #ffffff;
+    overflow: hidden;
+}
+.Rules-module__textPositioning {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 41px;
+    position: relative;
+    width: 1200px;
+    margin: 41px 0 0 47px;
+    z-index: 1;
+}
+.Rules-module__rulesTextHeader {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+}
+.Rules-module__rulesText {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    width: 1200px;
+    min-width: 0;
+    height: 468px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    z-index: 3;
+}
+
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
+        Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
+        sans-serif;
+}
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+.Register-module__loginFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 31px;
+    position: relative;
+    width: 698px;
+    height: auto;
+    margin: 181px 0 0 371px;
+    padding: 21px 89px 21px 89px;
+    background: #ffffff;
+    z-index: 10;
+}
+.Register-module__text {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 11;
+}
+.Register-module__frame3 {
+    flex-shrink: 0;
+    position: relative;
+    width: 316px;
+    height: 54px;
+    font-size: 0px;
+    border: 1px solid #000000;
+    z-index: 12;
+    overflow: hidden;
+}
+.Register-module__input {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 8px 0 0 0;
+    width: 316px;
+    background: white;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    border: 1px solid #000000;
+    z-index: 14;
+    outline: black;
+}
+.Register-module__frame4 {
+    flex-shrink: 0;
+    position: relative;
+    width: 316px;
+    height: 54px;
+    font-size: 0px;
+    border: 1px solid #000000;
+    z-index: 16;
+    overflow: hidden;
+}
+.Register-module__enterpassword {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 8px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 17;
+}
+.Register-module__forgotAndSwapFrame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 80px;
+    position: relative;
+    width: 644px;
+    z-index: 19;
+    overflow: hidden;
+}
+.Register-module__register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    width: 153px;
+    height: 22px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 20;
+}
+.Register-module__forgotpassword {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    width: 140px;
+    height: 22px;
+    color: #7a7a7a;
+    font-family: Inter, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 21;
+}
+.Register-module__buttonframe {
+    flex-shrink: 0;
+    position: relative;
+    width: 384px;
+    height: 39px;
+    cursor: pointer;
+    background: #e7e7e7;
+    border: 1px solid #000000;
+    z-index: 22;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+}
+
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
+        Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
+        sans-serif;
+}
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+.Login-module__loginFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 31px;
+    position: relative;
+    width: 698px;
+    height: auto;
+    margin: 181px 0 0 371px;
+    padding: 21px 89px 21px 89px;
+    background: #ffffff;
+    z-index: 10;
+}
+.Login-module__text {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 11;
+}
+.Login-module__frame3 {
+    flex-shrink: 0;
+    position: relative;
+    width: 316px;
+    height: 54px;
+    font-size: 0px;
+    border: 1px solid #000000;
+    z-index: 12;
+    overflow: hidden;
+}
+.Login-module__input {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 8px 0 0 0;
+    width: 316px;
+    background: white;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    border: 1px solid #000000;
+    z-index: 14;
+    outline: black;
+}
+.Login-module__frame4 {
+    flex-shrink: 0;
+    position: relative;
+    width: 316px;
+    height: 54px;
+    font-size: 0px;
+    border: 1px solid #000000;
+    z-index: 16;
+    overflow: hidden;
+}
+.Login-module__enterpassword {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 8px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 17;
+}
+.Login-module__forgotAndSwapFrame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 80px;
+    position: relative;
+    width: 644px;
+    z-index: 19;
+    overflow: hidden;
+}
+.Login-module__register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    width: 153px;
+    height: 22px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 20;
+}
+.Login-module__forgotpassword {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    width: 140px;
+    height: 22px;
+    color: #7a7a7a;
+    font-family: Inter, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 21;
+}
+.Login-module__buttonframe {
+    flex-shrink: 0;
+    position: relative;
+    width: 384px;
+    height: 39px;
+    cursor: pointer;
+    background: #e7e7e7;
+    border: 1px solid #000000;
+    z-index: 22;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+}
+
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica,
+        Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 'Source Han Sans CN',
+        sans-serif;
+}
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+.Post-module__comentsFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    position: relative;
+    width: auto;
+    margin: 25px 76px 0 76px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    overflow: hidden;
+}
+.Post-module__postCommentFrame {
+    position: relative;
+    width: 1288px;
+    height: 208px;
+    margin: 33px 0 0 76px;
+    background: #ffffff;
+    z-index: 104;
+    overflow: hidden;
+}
+.Post-module__frame421 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 27px;
+    position: absolute;
+    width: 971px;
+    height: 152px;
+    top: 50%;
+    left: 39px;
+    border: 1px solid #000000;
+    transform: translate(0, -50%);
+    z-index: 105;
+    overflow: hidden;
+}
+.Post-module__comment {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    height: 152px;
+    width: 971px;
+    color: #000000;
+    top: 28px;
+    left: 39px;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 106;
+}
+.Post-module__frame414 {
+    position: absolute;
+    width: 176px;
+    height: 39px;
+    top: 28px;
+    left: 1073px;
+    cursor: pointer;
+    background: #e7e7e7;
+    border: 1px solid #000000;
+    z-index: 108;
+}
+.Post-module__postInfo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 83px;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 38px 78px 0 78px;
+    background: #ffffff;
+    z-index: 99;
+}
+.Post-module__postAuthor {
+    flex-basis: auto;
+    position: relative;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 100;
+}
+.Post-module__postTitle {
+    flex-basis: auto;
+    position: relative;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 103;
+}
+.Post-module__postDate {
+    flex-basis: auto;
+    position: relative;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 101;
+}
+.Post-module__commentCount {
+    flex-basis: auto;
+    position: relative;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 102;
+}
+
+.Comment-module__innerFrame {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 50px;
+    width: auto;
+    height: auto;
+    margin: 0 0 30px 0;
+}
+.Comment-module__commentFrame {
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 0;
+    height: auto;
+    border: 1px solid #000000;
+    z-index: 1;
+}
+.Comment-module__infoFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 15px;
+    position: relative;
+    width: 314px;
+    height: auto;
+    top: 9px;
+    left: 15px;
+    z-index: 2;
+}
+.Comment-module__commentAuthor {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    max-width: 400px;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    /* white-space: nowrap; */
+    z-index: 3;
+}
+.Comment-module__commentDate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    width: 269px;
+    height: auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 4;
+    overflow: hidden;
+}
+.Comment-module__commentNumber {
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    min-width: 0;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+}
+.Comment-module__commentText {
+    position: relative;
+    width: 874px;
+    height: auto;
+    top: 9px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24.205px;
+    text-align: left;
+    z-index: 6;
+}
+
+.App-module__mainContainer {
+    overflow: hidden;
+}
+
+.App-module__mainContainer {
+    position: relative;
+    padding-bottom: 70px;
+    background: #d9d9d9;
+    overflow: hidden;
+}
+
+.Header-module__forumHeaderFrame {
+    position: relative;
+    width: auto;
+    height: 180px;
+    margin: 0 0 0 0;
+    padding: 0 20px 0 20px;
+    background: #2d4392;
+    z-index: 84;
+    overflow: hidden;
+    min-width: 0;
+}
+.Header-module__forumUzhnu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    width: 415px;
+    height: 180px;
+    top: 0;
+    left: 240px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 86;
+    overflow: hidden;
+}
+.Header-module__icon {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 0;
+    left: 20px;
+    background: url(/ebfee5f9b432959b0b22.png) no-repeat center;
+    background-size: cover;
+    z-index: 87;
+}
+.Header-module__forumHeaderNavigation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+    position: relative;
+    width: auto;
+    height: 40px;
+    margin: 0 0 0 0;
+    padding: 0 20px 0 20px;
+    background: #ffed00;
+    z-index: 88;
+    overflow: hidden;
+}
+.Header-module__mainAndRules {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 34px;
+    position: absolute;
+    width: 297px;
+    height: 39px;
+    top: 0;
+    left: 34px;
+    z-index: 90;
+}
+.Header-module__main {
+    position: relative;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 91;
+}
+.Header-module__rules {
+    position: relative;
+    height: 39px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 92;
+}
+.Header-module__loginRegister {
+    position: relative;
+    height: 40px;
+    top: calc(50% - 20px);
+    float: right;
+    margin: 0 0 0 auto;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: right;
+    white-space: nowrap;
+    z-index: 93;
+}
