@@ -7,21 +7,25 @@ import AuthContext from '../../auth/AuthProvider';
 import { useGet } from '../../hooks/useGet';
 import { usePost } from '../../hooks/usePost';
 
-export default function Main() {
+export default function Post() {
     const { postID } = useParams();
     const { auth } = useContext(AuthContext);
     const { getPostsData, getCommentsData } = useGet();
     const { createComment } = usePost();
 
     const [timeOfCreation, setTimeOfCreation] = useState('');
-
     const itemsPerPage = 10;
 
-    const [thisPost, setThisPost] = useState({ creationDateTime: 0, postTitle: '', postAuthor: '' });
+    const [thisPost, setThisPost] = useState({
+        creationDateTime: 0,
+        postTitle: 'Loading...',
+        postAuthor: 'Unknown',
+    });
     const [pageNumber, setPageNumber] = useState(1);
     const [commentsData, setCommentsData] = useState([]);
     const [loggedIn, setLoggedIn] = useState(auth.email === '' && localStorage.getItem('user') === null);
     const [newComment, setNewComment] = useState('');
+
     const totalItems = commentsData.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const indexOfLastItem = pageNumber * itemsPerPage;
@@ -41,7 +45,7 @@ export default function Main() {
                 const postId = p.id || Object.keys(postsData).find((key) => postsData[key] === p);
                 return postId === postID;
             });
-            setThisPost(post);
+            setThisPost(post || {});
 
             if (post) {
                 const time = new Date(post.creationDateTime);
@@ -79,10 +83,10 @@ export default function Main() {
         <>
             <div className={styles.postInfo}>
                 <span className={styles.postAuthor}>
-                    Автор посту: {thisPost.postAuthor.substring(0, thisPost.postAuthor.indexOf('@'))}
+                    Автор посту: {thisPost?.postAuthor?.substring(0, thisPost?.postAuthor?.indexOf('@')) || 'Unknown'}
                 </span>
-                <span className={styles.postTitle}>Назва посту: {thisPost.postTitle}</span>
-                <span className={styles.postDate}>Дата створення: {timeOfCreation}</span>
+                <span className={styles.postTitle}>Назва посту: {thisPost?.postTitle || 'No Title'}</span>
+                <span className={styles.postDate}>Дата створення: {timeOfCreation || 'Not Available'}</span>
                 <span className={styles.commentCount}>Кількість коментарів: {commentsData.length}</span>
             </div>
             <PageNumberNavigation pageChange={setPageNumber} currentPage={pageNumber} maxPages={totalPages} />

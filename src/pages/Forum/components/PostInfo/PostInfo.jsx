@@ -13,17 +13,18 @@ export default function PostInfo({ postTitle, authorName, commentNumber, creatio
     let second = time.getSeconds();
     if (minute < 10) minute = '0' + minute;
     if (second < 10) second = '0' + second;
+
     return (
         <div className={styles.postInfo}>
             <div className={styles.frameInner}>
                 <div className={styles.leftColumn}>
                     <Link to={`/${forumName}/${postId}`} state={{ name: postTitle }} className={styles.postTitle}>
-                        {postTitle}
+                        {postTitle || 'Untitled Post'}
                     </Link>
-                    <span className={styles.authoName}>Автор посту: {authorName}</span>
+                    <span className={styles.authoName}>Автор посту: {authorName || 'Unknown Author'}</span>
                 </div>
                 <div className={styles.rightColumn}>
-                    <span className={styles.comentCount}>Кількість коментарів: {commentNumber}</span>
+                    <span className={styles.comentCount}>Кількість коментарів: {commentNumber || 0}</span>
                     <span className={styles.creationDate}>
                         Дата створення: {date + ' ' + month + ' ' + year + ' ' + hour + ':' + minute + ':' + second}
                     </span>

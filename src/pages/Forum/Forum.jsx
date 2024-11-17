@@ -21,7 +21,7 @@ export default function Main() {
 
     const [pageNumber, setPageNumber] = useState(1);
     const [postsData, setPostsData] = useState([]);
-    const [loggedIn, setLoggedIn] = useState(auth.email === '' && localStorage.getItem('user') === null);
+    const [loggedIn, setLoggedIn] = useState(auth?.email === '' && localStorage.getItem('user') === null);
     const totalItems = postsData.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const indexOfLastItem = pageNumber * itemsPerPage;
@@ -32,13 +32,16 @@ export default function Main() {
 
     useEffect(() => {
         const filterPosts = (forum, posts, comments) => {
-            const forumPostIds = Object.values(forum).map((item) => item.postId.toString());
-
-            const processedPosts = Object.values(posts).map((post) => {
-                const postId = post.id || Object.keys(posts).find((key) => posts[key] === post);
-                const commentsNumber = Object.values(comments).filter((comment) => comment.postId === postId).length;
-                return { ...post, id: postId, commentsNumber };
-            });
+            const forumPostIds = forum ? Object.values(forum).map((item) => item.postId.toString()) : [];
+            const processedPosts = posts
+                ? Object.values(posts).map((post) => {
+                      const postId = post.id || Object.keys(posts).find((key) => posts[key] === post);
+                      const commentsNumber = comments
+                          ? Object.values(comments).filter((comment) => comment.postId === postId).length
+                          : 0;
+                      return { ...post, id: postId, commentsNumber };
+                  })
+                : [];
 
             return processedPosts.filter((post) => forumPostIds.includes(post.id));
         };
@@ -49,46 +52,44 @@ export default function Main() {
                 console.error(forumResponse.error);
                 return;
             }
-            const forumData = forumResponse.data;
+            const forumData = forumResponse.data || {};
             const postsResponse = await getPostsData();
             if (postsResponse.error) {
                 console.error(postsResponse.error);
                 return;
             }
-            const postsData = postsResponse.data;
+            const postsData = postsResponse.data || [];
             const commentsResponse = await getCommentsData();
             if (commentsResponse.error) {
                 console.error(commentsResponse.error);
                 return;
             }
-            const commentsData = commentsResponse.data;
+            const commentsData = commentsResponse.data || [];
             const filteredPosts = filterPosts(forumData, postsData, commentsData);
             setPostsData(filteredPosts);
         };
 
         comparePosts();
-    }, []);
+    }, [forumName]);
 
     useEffect(() => {
-        setLoggedIn(auth.email === '');
+        setLoggedIn(auth?.email === '');
     }, [loggedIn]);
 
     const handleCreatePost = async () => {
-        if (newPostText === '') {
+        if (!newPostText || !newPostName) {
             setNewPostText('Input here first');
-            return;
-        }
-        if (newPostName === '') {
             setNewPostName('Input here first');
             return;
         }
 
-        await createPost({ forumName, postTitle: newPostName, postText: newPostText, authEmail: auth.email });
+        await createPost({ forumName, postTitle: newPostName, postText: newPostText, authEmail: auth?.email });
     };
 
     const [sortParams, setSortParams] = useState({ keyToSort: 'creationDateTime', direction: 'asc' });
     let currentDirection = sortParams.direction;
     let currentKey = sortParams.keyToSort;
+
     function commentSortClick() {
         setCommentColor(true);
         setDateColor(false);
@@ -98,6 +99,7 @@ export default function Main() {
             direction: sortParams.direction,
         });
     }
+
     function dateSortClick() {
         setCommentColor(false);
         setDateColor(true);
@@ -107,6 +109,7 @@ export default function Main() {
             direction: sortParams.direction,
         });
     }
+
     function ascClick() {
         setAscColor(true);
         setDescColor(false);
@@ -116,6 +119,7 @@ export default function Main() {
             direction: 'asc',
         });
     }
+
     function descClick() {
         setAscColor(false);
         setDescColor(true);
@@ -131,16 +135,22 @@ export default function Main() {
             keyToSort: currentKey,
             direction: currentDirection,
         });
-        if (sortParams.direction === 'asc') {
-            return postsData.sort((a, b) => (a[sortParams.keyToSort] > b[sortParams.keyToSort] ? 1 : -1));
-        } else return postsData.sort((a, b) => (a[sortParams.keyToSort] > b[sortParams.keyToSort] ? -1 : 1));
+        return postsData.sort((a, b) =>
+            currentDirection === 'asc'
+                ? a[sortParams.keyToSort] > b[sortParams.keyToSort]
+                    ? 1
+                    : -1
+                : a[sortParams.keyToSort] > b[sortParams.keyToSort]
+                  ? -1
+                  : 1,
+        );
     }
 
     return (
         <>
             <div className={styles.flexrowe}>
                 <div className={styles.regroup}>
-                    <span className={styles.facultyforum}>{useLocation().state.name}</span>
+                    <span className={styles.facultyforum}>{useLocation()?.state?.name || 'Forum Name'}</span>
                     <div>
                         <button className={styles.buttonSort} onClick={sortResult}>
                             Сортувати
@@ -186,7 +196,7 @@ export default function Main() {
                     <PostInfo
                         key={item.id}
                         postTitle={item.postTitle}
-                        authorName={item.postAuthor.substring(0, item.postAuthor.indexOf('@'))}
+                        authorName={item.postAuthor?.substring(0, item.postAuthor.indexOf('@')) || 'Unknown Author'}
                         commentNumber={item.commentsNumber}
                         creationTime={item.creationDateTime}
                         postId={item.id}
@@ -205,7 +215,7 @@ export default function Main() {
                             placeholder={'Назва поста'}
                             value={newPostName}
                             onChange={(e) => setNewPostName(e.target.value)}
-                        ></input>
+                        />
                         <button className={styles.button} onClick={handleCreatePost}>
                             Створити
                         </button>

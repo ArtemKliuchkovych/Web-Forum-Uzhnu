@@ -14,6 +14,8 @@ module.exports = defineConfig({
             bundler: 'webpack',
             webpackConfig,
         },
+        viewportWidth: 1440,
+        viewportHeight: 900,
         setupNodeEvents(on, config) {
             // component testing node events setup code
             // https://docs.cypress.io/guides/tooling/code-coverage

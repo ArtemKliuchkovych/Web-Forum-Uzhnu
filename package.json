@@ -14,6 +14,7 @@
         "prepare": "husky && husky install",
         "test:ct": "cypress run --component --browser chrome",
         "test:open": "cypress open",
+        "test:coverage": "nyc report --reporter=text-summary --reporter=html",
         "start:json-server": "json-server-auth --watch db.json --port 3030"
     },
     "author": "Ключкович Артем",
@@ -24,6 +25,17 @@
         ],
         "*.{js,jsx,css}": [
             "prettier . --write"
+        ]
+    },
+    "nyc": {
+        "extends": "@istanbuljs/nyc-config-babel",
+        "all": true,
+        "include": [
+            "src/**/*.js"
+        ],
+        "exclude": [
+            "node_modules",
+            "cypress/**/*"
         ]
     },
     "dependencies": {
@@ -40,7 +52,8 @@
         "@babel/core": "^7.25.2",
         "@babel/preset-env": "^7.25.4",
         "@babel/preset-react": "^7.24.7",
-        "@cypress/code-coverage": "^3.13.2",
+        "@cypress/code-coverage": "^3.13.6",
+        "@cypress/react18": "^2.0.1",
         "@eslint/js": "^9.12.0",
         "@istanbuljs/nyc-config-babel": "^3.0.0",
         "babel-loader": "^9.2.1",
@@ -62,6 +75,7 @@
         "husky": "^8.0.0",
         "lint-staged": "^15.2.10",
         "mini-css-extract-plugin": "^2.9.1",
+        "nyc": "^17.1.0",
         "prettier": "3.3.3",
         "style-loader": "^4.0.0",
         "webpack": "^5.95.0",
