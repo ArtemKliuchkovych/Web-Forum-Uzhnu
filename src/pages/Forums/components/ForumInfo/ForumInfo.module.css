@@ -1,0 +1,65 @@
+.forumFrame {
+    align-self: stretch;
+    position: relative;
+    min-width: 0;
+    min-height: 138px;
+    height: auto;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    z-index: 75;
+}
+.forumColumn {
+    width: 600px;
+    height: auto;
+    padding-top: 20px;
+    padding-left: 45px;
+    padding-bottom: 20px;
+    top: 19px;
+    left: 45px;
+    z-index: 77;
+}
+.forumName {
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 600px;
+    height: auto;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    z-index: 76;
+}
+.forumPostNumber {
+    display: block;
+    position: relative;
+    height: 39px;
+    margin: 20px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 77;
+}
+.forumLastUpdate {
+    position: absolute;
+    width: 320px;
+    height: 78px;
+    top: calc(50% - 40px);
+    right: 45px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 82;
+    overflow: hidden;
+}

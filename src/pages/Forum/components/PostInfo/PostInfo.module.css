@@ -1,0 +1,92 @@
+.postInfo {
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 0;
+    height: auto;
+    width: auto;
+    border: 1px solid #000000;
+    z-index: 1;
+    /* overflow: hidden; */
+}
+.frameInner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 50px;
+    width: auto;
+    height: auto;
+    margin: 0 0 30px 0;
+}
+.leftColumn {
+    position: relative;
+    width: 1000px;
+    height: auto;
+    font-size: 0px;
+    margin: 25px 0 35px 21px;
+    z-index: 3;
+}
+.postTitle {
+    display: block;
+    position: relative;
+    height: auto;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38.727px;
+    text-align: left;
+    /* white-space: nowrap; */
+    z-index: 2;
+}
+.authoName {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 3;
+}
+.rightColumn {
+    position: relative;
+    width: 316px;
+    height: 64px;
+    margin: 38px 60px 0 0;
+    font-size: 0px;
+    z-index: 5;
+}
+.comentCount {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 0 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 4;
+}
+.creationDate {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 0;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+}
